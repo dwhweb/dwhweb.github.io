@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="eventsMod">
+<head>
+    <meta charset="utf-8">
+    <title>Active Baby Calendar</title>
+    <meta content="" name="description">
+    <meta content="" name="author"><!-- Mobile Specific Metas -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+    
+    <!-- CSS -->
+    <link href="amazium.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <link href="leaflet.css" rel="stylesheet">
+    
+    <!-- Favicons -->
+    <link href="img/favicon.ico" rel="shortcut icon">
+    <link href="img/apple-touch-icon-5b3615f3c2dc9f04a4ae2e9271d7b4d2.png" rel="apple-touch-icon-precomposed">
+    
+    <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="leaflet.js"></script>
+    <script src="abc.js"></script>
+</head>
+<body ng-controller="MainCtrl as ctrl">
+    <div class="row">
+        <div class="grid border-bottom logo">
+            <img src="images/ABCLogo.svg" alt="Active Baby Calendar" />
+        </div>
+        <div class="grid box border-bottom">
+            <div class="btn-group menu-bottom">
+                <button class="btn btn--hoverColor-info">Events</button> 
+                <button class="btn btn--color-default">Groups</button>
+                <button class="btn btn--color-default">Venues</button>
+            </div>
+        </div>
+        <div class="grid box border-bottom">
+            <input name="login" type="search" class="menu-bottom">
+        </div>
+        <div class="grid box border-bottom">
+            <div class="btn-group menu-bottom">
+                <button class="btn btn--colour-default">Login</button> 
+                <button class="btn btn--colour-default">Sign Up</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="grid-8 grid--offset-2">
+            <br />
+            <input name="filterBar" type="text" ng-model="filterBar">
+            <br />
+        </div>
+    </div>
+    
+    <div class="row" ng-repeat="event in ctrl.events | filter:filterBar">
+        <div class="grid-3 logo leftbar">
+            <img src={{event.image}} alt="Venue logo" />
+            <h2>{{event.venue}}</h2>
+            <span class="bold">Event starts:</span> {{event.startDate | date:"dd/MM/yy h:mma"}}
+            <span class="bold">Event finishes:</span> {{event.endDate | date:"dd/MM/yy h:mma"}}
+        </div>
+        <div class="grid middle">
+            <h2>{{event.eventTitle}}</h2>
+            <p>{{event.description}}</p>
+        </div>
+        <div class="grid-3 rightbar" id="{{ 'map' + $index }}">
+            {{ ctrl.initialiseMap(('map' + $index), event.latlong) }}
+        </div>
+        <div class="row"><p></p></div>
+    </div>
+    
+</body>
+</html>

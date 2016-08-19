@@ -1,0 +1,71 @@
+@font-face {
+    font-family: Maven Pro;
+    src: url(font/mavenpro-regular.woff);
+}
+
+body {
+    font-family:'Maven Pro', sans-serif;
+}
+
+.menu-bottom {
+  align-self: flex-end;
+  margin-bottom: 0px;
+}
+
+.border-bottom {
+    border-bottom: 1px solid skyblue;
+}
+
+.borders {
+    border: 1px solid black;
+    border-radius: 25px;
+}
+
+.leftbar {
+    border: 1px solid skyblue;
+    border-radius: 25px 0px 0px 25px;
+}
+
+.rightbar {
+    border: 1px solid skyblue;
+    border-radius: 0px 25px 25px 0px;
+}
+.middle {
+    border-top: 1px solid skyblue;
+    border-bottom: 1px solid skyblue;
+}
+
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.logo img {
+    margin: auto;
+    display: block;
+    align-self: center;
+}
+
+.btn-group {
+    border : 1px solid skyblue;
+    border-bottom: none;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.btn-group .btn {
+    border : none;
+}
+
+.btn-group .btn:hover {
+    background-color: skyblue;
+    border : none;
+}
+
+.showBr {
+    display: block;
+}
